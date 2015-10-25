@@ -1,0 +1,121 @@
+Doing things on a Mac
+————————————————————————————————————————————————————————————————————————————————————
+————————————————————————————————————————————————————————————————————————————————————
+Homebrew for installing programs
+————————————————————————————————————————————————————————————————————————————————————
+How to install Brew
+
+Download Brew by pasting this in the terminal:
+
+$ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)”
+
+2. The script explains what it will do then pauses before it does it
+3. When it’s done, run this on terminal:
+
+	$ brew doctor
+	Your system is ready to brew.
+
+4. Install Cask (using brew)
+
+	$ brew install caskroom/cask/brew-cask
+————————————————————————————————————————————————————————————————————————————————————
+Using Brew
+
+$ brew cask search <search_term>
+$ brew cask install <search_term>
+
+For example,
+
+$ brew cask search git
+$ brew cask install git
+
+This puts git into this directory:	/opt/homebrew-cask/Caskroom 
+Things that aren’t available to install with Cask, but can be installed with Brew only, go into this directory (for example, Maven):		/usr/local/Cellar 
+
+(More instructions found here: http://www.howtogeek.com/211541/homebrew-for-os-x-easily-installs-desktop-apps-and-terminal-utilities/)
+————————————————————————————————————————————————————————————————————————————————————
+generating token API LIMIT EXCEEDED ERROR
+
+Sometimes this message comes up when trying to search with brew: 
+
+Error: GitHub API rate limit exceeded for 192.77.237.90. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)
+Try again in 46 minutes 50 seconds, or create a personal access token:
+  https://github.com/settings/tokens/new?scopes=&description=Homebrew
+and then set the token as: HOMEBREW_GITHUB_API_TOKEN
+
+Go to link above, generate the new token (uncheck all boxes), and copy it. The token will look something like this 7425f8d80d57447d093d1f8105235efd5607d04b. Then run the following in terminal:
+
+$ export HOMEBREW_GITHUB_API_TOKEN=7425f8d80d57447d093d1f8105235efd5607d04b
+————————————————————————————————————————————————————————————————————————————————————
+————————————————————————————————————————————————————————————————————————————————————
+How to set JAVA_HOME path
+————————————————————————————————————————————————————————————————————————————————————
+
+Open terminal window
+
+$ echo export "JAVA_HOME=\$(/usr/libexec/java_home)" >> ~/.bash_profile
+
+Restart your shell
+
+$ echo $JAVA_HOME
+
+This will return your JAVA_HOME path (something like this): 
+
+/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home
+————————————————————————————————————————————————————————————————————————————————————
+————————————————————————————————————————————————————————————————————————————————————
+Github
+————————————————————————————————————————————————————————————————————————————————————
+setting up git
+
+$ git init
+$ git config --global user.name "Sana Mac”
+$ git config --global user.email “ismail.sana@gmail.com"
+$ git config —list
+user.name=Sana Mac
+user.email=ismail.sana@gmail.com
+$ touch test.txt
+$ git add test.txt
+$ git commit -m “1st commit”
+$ git remote add origin https://github.com/gitsana/GitDocumentation.git
+$ git push -u origin master
+————————————————————————————————————————————————————————————————————————————————————
+————————————————————————————————————————————————————————————————————————————————————
+Terminal
+————————————————————————————————————————————————————————————————————————————————————
+general terminal commands
+
+ls
+ls -1
+ls -1 -F 		// shows directories with ‘/‘, files with nothing, * after executable files, etc.
+ls [-1] | grep <search_term>
+cat filename.txt
+vi filename.txt
+ls -1 > filename.txt
+ls -1 >> filename.txt
+cp file1.txt file2.txt
+cp folder1/*.txt folder2/
+mkdir folderName
+rmdir folderName
+touch file1.txt
+rm file1.txt
+mv file1.txt directory1/		// moves files into directory
+mv old_name.txt new_name.txt	// renames the same file
+————————————————————————————————————————————————————————————————————————————————————
+vim editor commands
+
+i = insert mode (at the beginning of line)
+a = insert mode (at end of line)
+ESC = command mode
+dd = delete whole line (when in command mode)
+:q = quit
+:w = save
+:wq = save and quit
+:q! = force quit
+:wq! = force save and quit
+————————————————————————————————————————————————————————————————————————————————————
+Remote access computers
+
+ssh <remotename>
+scp file1.txt file2.txt		// similar to cp
+scp folder1/*.txt folder2/		// similar to cp
