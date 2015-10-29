@@ -119,3 +119,12 @@ Remote access computers
 ssh <remotename>
 scp file1.txt file2.txt		// similar to cp
 scp folder1/*.txt folder2/		// similar to cp
+
+————————————————————————————————————————————————————————————————————————————————————
+
+ERROR: Port already in use: 1099
+
+$ lsof -i :1099
+COMMAND  PID USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME
+java    2336 sana   24u  IPv6 0x2b3871144bac1fb9      0t0  TCP *:rmiregistry (LISTEN)
+$ kill -9 2336
