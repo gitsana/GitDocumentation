@@ -101,6 +101,7 @@ touch file1.txt
 rm file1.txt
 mv file1.txt directory1/		// moves files into directory
 mv old_name.txt new_name.txt	// renames the same file
+zip -r zipfile.zip directory_name	// zip files in said directory
 ————————————————————————————————————————————————————————————————————————————————————
 vim editor commands
 
