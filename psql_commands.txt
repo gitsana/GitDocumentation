@@ -1,0 +1,17 @@
+———————————— PSQL COMMANDS ————————— 
+
+\l or \list		list all databases
+
+\dt			list all tables in the current database
+
+\connect <db_name>	switch to another database
+\c <db_name>		switch to another database
+
+\dn 			show schema
+
+\conninfo or \c		shows connection info (as a sentence)
+
+select current_database();	shows current database
+select current_schema();	shows current schema
+
+
