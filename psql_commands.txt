@@ -7,11 +7,14 @@
 \connect <db_name>	switch to another database
 \c <db_name>		switch to another database
 
-\dn 			show schema
+\dn 			show all schemas
 
 \conninfo or \c		shows connection info (as a sentence)
 
 select current_database();	shows current database
 select current_schema();	shows current schema
 
+CTRL + L		clear the PSQL terminal/screen
 
+
+SET search_path TO <myschema>;		change schema
