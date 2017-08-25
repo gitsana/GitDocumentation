@@ -142,3 +142,41 @@ cd /var/log/
 postconf -d | grep size
 ————————————————————————————————————————————————————————————————————————————————————
 ————————————————————————————————————————————————————————————————————————————————————
+
+--- Getting an error during ansible deploy ---
+
+fatal: [s123-ranger-xyz] => SSH Error: Permission denied (publickey).
+    while connecting to 10.11.123.00:22
+It is sometimes useful to re-run the command using -vvvv, which prints SSH debug output to help diagnose the issue.
+
+FATAL: all hosts have already failed -- aborting
+
+--- RESOLUTION ---
+
+1. Added some stuff to the ~/.ssh/config file (read in article below):
+Host *
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/id_rsa  
+
+https://help.github.com/enterprise/2.10/user/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/
+(see the part where it says "If you're using macOS Sierra 10.12.2 or later, you will need to modify your ~/.ssh/config file to automatically load keys into the ssh-agent and store passphrases in your keychain...")
+Also check out this for the array of errors it could be: 
+https://help.github.com/enterprise/2.10/user/articles/error-permission-denied-publickey/
+
+2. Run this command
+$ ssh-add -K ~/.ssh/id_rsa
+
+3. Now check your identity by running this command
+$ ssh-add -l
+It should print out something like:
+2048 a0:dd:42:3c:5a:9d:e4:2a:21:52:4e:78:07:6e:c8:4d /Users/you/.ssh/id_rsa (RSA)
+Then you know you have an identity and it works
+
+————————————————————————————————————————————————————————————————————————————————————
+————————————————————————————————————————————————————————————————————————————————————
+
+
+
+————————————————————————————————————————————————————————————————————————————————————
+————————————————————————————————————————————————————————————————————————————————————
